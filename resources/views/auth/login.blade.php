@@ -42,6 +42,8 @@
                 <x-button class="ml-4">
                     {{ __('Log in') }}
                 </x-button>
+
+                <a href="{{ url('auth/github') }}" class="btn btn-github">Login with GitHub</a>
             </div>
         </form>
     </x-authentication-card>

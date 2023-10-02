@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+// backsite controller
+use App\Http\Controllers\Auth\SocialController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +19,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route::get('auth/github', 'Auth\SocialController@redirectToGitHub');
+//Route::get('auth/github/callback', 'Auth\SocialController@handleGitHubCallback');
+
+//Route::get('login', [LoginController::class, 'auth_redirect'])->name('auth.redirect');
+Route::get('auth/github', [SocialController::class, 'redirectToGitHub'])->name('redirect.to.github');
+Route::get('callback/github', [SocialController::class, 'handleGitHubCallback'])->name('handle.callback');
 
 Route::middleware([
     'auth:sanctum',
